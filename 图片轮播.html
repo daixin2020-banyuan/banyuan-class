@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            
+        }
+        .img-style{
+            position: relative;
+            width: 500px;
+            height: 100px;
+            animation: move linear 3s infinite  forwards; 
+        }
+
+        
+        #pic1,#pic2,#pic3,#pic4,#pic5{
+            width: 100px;
+            float: left;
+
+        }
+
+        @keyframes move{
+            0%{
+                left: 0px;
+            }
+            25%{
+                left: -100px;           
+             }
+            50%{
+                left: -200px;          
+              }
+            75%{
+                left: -300px;           
+            }
+            100%{
+                left: -400px;           
+             }
+            
+        }
+    </style>
+
+
+</head>
+<body>
+        <div class='father'>
+            <div class='img-style'>
+            <img id='pic1' src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594635412097&di=e914d303f2db9aa90301cdaed202037d&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201702%2F04%2F20170204225853_UA3yB.jpeg"></img>
+            <img id='pic2' src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594635430997&di=7f67d00a9dd57d52d581a5f1aa97bdcd&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2251109357%2C3706984614%26fm%3D214%26gp%3D0.jpg" alt=""></img>
+            <img id='pic3' src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594635412095&di=406f29f3f07da6ce044b921ace635fc2&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201512%2F07%2F20151207175236_XJdhy.jpeg" alt=""></img>
+            <img id='pic4' src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594635412095&di=f74a8afa3734402052fdbfea8114805f&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F09%2F20170309105122_fGhjn.jpeg" alt=""></img>
+            <img id='pic5' src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594635412097&di=e914d303f2db9aa90301cdaed202037d&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201702%2F04%2F20170204225853_UA3yB.jpeg"></img>
+            </div>
+        </div>
+
+    
+</body>
+</html>
