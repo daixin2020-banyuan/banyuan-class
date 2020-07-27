@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    
+</body>
+<script>
+        //_后面的字母大写，删除_
+       
+    function Check(a){
+        var str = 'a';
+
+        for(var i =0; i < a.length-1;i++){
+            var c = "";
+            if (a.charCodeAt(i) == 95){
+                c=a.charAt(i+1).toUpperCase();                
+            }
+            else{
+                c=a.charAt(i+1);
+            }            
+            str = str +  c;
+            
+        } 
+        return str;
+    }
+    var b = Check('a_bgfgh_h_d');
+    b = b.replace(/_/g,"");
+    console.log(b) //aBgfghHD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 冒泡排序
+    // function bubble(array){
+    //     if(Array.isArray(array)){
+    //         if(array.length<1){
+    //             return array;
+    //         }
+    //             for(var i=0;i<array.length-1;i++){
+    //                 for(var j=0;j<array.length-1-i;j++){
+    //                     if(array[j]<array[j+1]){
+    //                         temp=array[j];
+    //                         array[j]=array[j+1];
+    //                         array[j+1]=temp;
+    //                     }
+
+    //                 }
+    //         }
+    //             return array;
+    //     }
+    // }
+    // var a1=new bubble([5,2,4,6,8,9,1,7,3]);
+    // console.log(a1);
+</script>
+</html>
