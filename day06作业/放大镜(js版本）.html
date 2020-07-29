@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <link rel="stylesheet" href="./style1.css">
+</head>
+<body>
+    
+            <div class="demo">
+                <!-- 左边的小图 -->
+                <div class="small-box">
+                    <div class="mark"></div>
+                    <!-- 放大镜 -->
+                    <div class="float-box"></div>
+                    <img src="./cat.jpeg"  class="small-img"/>
+                </div>
+
+                <!-- 显示的大图 -->
+                <div class="big-box">
+                    <img src="./cat.jpeg"/>
+                </div>
+            </div>
+</body>
+
+<script>
+        var objMark = document.getElementsByClassName("mark")[0];
+        var objFloatbox = document.getElementsByClassName("float-box")[0];
+        var objSmallbox=document.getElementsByTagName("small-box")[0];
+        var objBigbox = document.getElementsByClassName("big-box")[0];
+        var objDemo = document.getElementsByClassName("demo")[0];
+        var objBigimg = objBigbox.getElementsByTagName("img")[0];
+
+
+       objMark.onmouseover = function(){
+            objFloatbox.style.display="block";
+            objBigbox.style.display="block";      
+       } 
+       objMark.onmouseout = function(){
+            objFloatbox.style.display="none";
+            objBigbox.style.display="none";  
+       }
+
+       objMark.onmousemove = function (e){
+            var _event= e || window.event;
+
+            var left = _event.clientX - objDemo.offsetLeft  - objFloatbox.offsetWidth/2;
+            // console.log(left)
+            var top = _event.clientY - objDemo.offsetTop  - objFloatbox.offsetHeight/2;
+            // console.log(top)
+            console.log(objDemo.offsetWidth - objFloatbox.offsetWidth)
+            if(left<0 ){
+                left= 0 ;
+            }
+            else if(left > ( objDemo.offsetWidth - objFloatbox.offsetWidth) ){
+                left = objDemo.offsetWidth - objFloatbox.offsetWidth;
+            }
+
+            if (top<0){
+                top = 0 ;
+            }
+            else if(top > (objDemo.offsetHeight - objFloatbox.offsetHeight)){
+                top = objDemo.offsetHeight - objFloatbox.offsetHeight;
+            }
+
+            objFloatbox.style.left=left+'px';
+            objFloatbox.style.top=top+ 'px'
+            
+            var persentX = left/(objDemo.offsetWidth - objFloatbox.offsetWidth);
+            var persentY = top/(objDemo.offsetHeight - objFloatbox.offsetHeight);
+            
+            objBigimg.style.left = -persentX*(objBigimg.offsetWidth-objBigbox.offsetWidth)+'px';
+            objBigimg.style.top = -persentY*(objBigimg.offsetHeight-objBigbox.offsetHeight)+'px';
+
+
+
+       }
+       
+
+</script>
+</html>

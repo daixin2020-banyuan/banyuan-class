@@ -23,9 +23,19 @@
         <div class="right">
             <ul>
                     <a href="https://www.baidu.com/s?wd=%E9%AB%98%E8%80%83&sa=searchpromo_gk_pc_ysj"></a><li style="color:rgb(246, 48, 81)">高考加油</li>
-                    <li style="color:rgb(34,34,34);;">设置</li>
+                    <li style="color:rgb(34,34,34);;"><button class="button-setting" style="width: 50px;">设置</button></li>
             </ul>
-            <button class="lgbutton">登陆</button>
+            <div class="top-userset-menu" >
+                <div class="s-user-setting-pfmenu">
+                    <a class="setpref" href="javascript:;">搜索设置</a><br/>
+                    <a class="setpref" href="//www.baidu.com/gaoji/advanced.html" target="_blank">高级搜索</a><br/>
+                    <a class="setpref" href="javascript:;">关闭预测</a><br/>
+                    <a class="setpref" href="https://www.baidu.com/duty/privacysettings.html" target="_blank">隐私设置</a><br/>
+                    <a class="setpref" href="javascript:;">关闭热榜</a><br/>
+                    <a class="setpref" href="javascript:;" style="display: none;">开启热榜</a>
+                 </div>     
+            </div>
+            
         </div>   
     
         </div>
@@ -60,4 +70,18 @@
      </div>
 
 </body>
+<script>
+    var a = document.getElementsByClassName('top-userset-menu')[0];
+    var b = document.getElementsByClassName('button-setting')[0];
+
+    b.onmouseover = function(){
+        a.style.display="block";
+    }
+    b.onmouseout = function(){
+        a.style.display="none";
+    }
+
+    
+</script>
 </html>
+

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            
+        }
+        .container{
+            width: 1000px;
+            height: 600px;
+            background-color: antiquewhite;
+            margin: 0 auto;
+            margin-top: 0px;            
+        }
+        .titlestyle{
+            height: 120px; 
+            border-bottom: burlywood;
+            border:1px;
+            border-bottom: solid;
+            margin-top: 0px;
+            margin-bottom: 65px;
+        }
+    
+        .inputstyle1,.inputstyle2{
+            height: 74px;
+            width: 717px;
+        }
+
+        .buttonstyle{
+            width: 161px;
+            height: 69px;
+            position: relative;
+            left: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table class="tablestyle">
+            <thead>
+                <div class="titlestyle"><h1>表单</h1></div>
+            </thead>
+            <tbody style="margin-top: 65px;">
+            <tr>
+                <td >Your Name:</td>
+                <td ><input type="text" class="inputstyle1" placeholder="Your Full Name" ></td>
+            </tr>
+
+            <tr>
+                <td>Your Password:</td>
+                <td ><input type="password" class="inputstyle2" placeholder="." ></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="tips"></div>
+                </td>           
+             </tr>
+            
+            <tr>
+                <td>
+                    <button class="buttonstyle">
+                            send
+                    </button>
+                 </td>
+            </tr>                
+            </tbody>
+        </table>
+    </div>
+
+
+    
+</body>
+<script>
+        var a =document.getElementsByClassName('inputstyle1')[0];
+        var b = /^[a-zA-Z0-9_]{4,16}$/ ;
+        var c = document.getElementsByClassName("tips") ;  
+        var d = document.getElementsByClassName('inputstyle2')[0];
+        var e = /^[[a-zA-Z0-9_]{8,15}$/;
+            
+
+        a.onchange=function(){
+        if (b.test(a.value) ){
+                return;
+        }
+        else if ( c !== "" ){
+                a.onchange=function(){
+                    c.innerHTML = "";        
+                }
+        }
+        else{
+            c.innerHTML="输入有错误"
+            }
+    }
+
+        d.onchange=function(){
+        if (e.test(b.value) ){
+                return;
+        }
+        else if ( c !== "" ){
+                d.onchange=function(){
+                    c.innerHTML = "";        
+                }
+        }
+        else{
+            c.innerHTML="输入有错误"
+            }
+
+
+    }
+
+
+
+
+</script>
+</html>
