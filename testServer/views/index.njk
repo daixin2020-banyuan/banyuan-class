@@ -1,5 +1,20 @@
-{% extends 'layout.njk' %}
+{# {% extends 'layout.njk' %} #}
 {% block content %}
-<h1>{{title}}</h1>
-<p>Welcome use {{title}}</p>
+<div>this is content block</div>
+
+{% block top %}
+{% include 'b.njk' %}
+
+{% if flag === 1 %}
+<div>flag = false </div>
+{% else %}
+<div>flag = true</div>
+{% endif %}
+
+
+
+{% endblock %}
+
+
+
 {% endblock %}

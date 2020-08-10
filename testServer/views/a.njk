@@ -1,0 +1,13 @@
+{% extends 'index.njk' %}
+
+{% block top %}
+<div>this is top</div>
+{% include 'b.njk' %}
+
+<p>{{title|join('^*&%*%*%^%*^%&')|capitalize}}</p>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+    
+    </div>
+
+    <button class="button1" onclick='ajax()'>提交</button>
+    <button class="button2" onclick='test()'>点击</button>
+</body>
+<script src="jquery3.5.js"></script>
+<script>
+    function ajax(){
+        $.ajax({
+            type:"post",
+            // async: false ,
+            url:"http://localhost:2000/ajax",
+            data : {
+                name:"",
+            },
+            success:function(result){
+                $('.main').html("<span>成功！</span>");
+            },
+            error:function(error){
+                $('.main').html()("<span>失败</span>");
+            }
+            
+        })
+    }
+    function test(){
+        console.log(1)
+    }
+    // $('.button1').click = test();
+    // $('.button2').click = ajax;
+</script>
+</html>
