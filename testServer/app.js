@@ -17,11 +17,18 @@ const path = require('path')
 const config = require('./config')
 const routes = require('./routes');
 const { normalize } = require('path');
+const session = require('koa-session');
 
 const port = process.env.PORT || config.port
 
 // error handler
 onerror(app)
+
+app.keys = ['banyuan']
+
+const CONFIG = {
+  key: 'koa.sessrun'
+};
 
 // middlewares
 app.use(bodyparser())
@@ -36,6 +43,7 @@ app.use(bodyparser())
     map: {'njk': 'nunjucks'},
     extension: 'njk'
   }))
+  .use(session(CONFIG,app))
   .use(router.routes())
   .use(router.allowedMethods())
 
@@ -47,34 +55,76 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - $ms`)
 })
 
-// router.get('/', async (ctx, next) => {
-//   // ctx.body = 'Hello World'
-//   ctx.state = {
-//     title: 'Koa2'
-//   }
-//   await ctx.render('index', ctx.state)
-// })
 
-// router.post('/ajax', async (ctx, next) => {
-//   // ctx.body = 'Hello World'
-//   const query = ctx.request.body;
-//   if(query.status === 'time'){
-//       await sleep(5000);
+router.get('/login', async (ctx, next) => {
+  
+  await ctx.render('login');
+  
 
-//   }
-//   ctx.response.body = {status:"success"}
+})
 
 
+router.post('/login', async (ctx, next) => {
 
-// })
-// function sleep(time){
-//   return new Promise((resolve,reject)=>{
-//     setTimeout(()=>{
-//       resolve();
+  const {name , password } = ctx.request.body;
+  let data = { name,password }
+  // data.password = JSON.stringify({password,gender:1});
+  
+  ctx.session.user = data;
 
-//     },time);
-//   })
-// }
+  console.log(data)
+  console.log("session.user=====>",ctx.session)
+
+  ctx.response.body = {
+    status:"success",
+  }  
+})
+
+router.get('/loginTest', async (ctx, next) => {
+
+  let user = ctx.session.user;
+
+  console.log('session ===>',ctx.session);
+  // let password = ctx.session.password;
+  console.log("ctx.session.user=====>",user)
+
+  if(user){
+    await ctx.render('todoList');
+  }else{
+    ctx.redirect('/login');
+  }
+  
+})
+
+
+router.get('/', async (ctx, next) => {
+  // ctx.body = 'Hello World'
+  ctx.state = {
+    title: 'Koa2'
+  }
+  await ctx.render('index', ctx.state)
+})
+
+router.post('/ajax', async (ctx, next) => {
+  // ctx.body = 'Hello World'
+  const query = ctx.request.body;
+  if(query.status === 'time'){
+      await sleep(5000);
+
+  }
+  ctx.response.body = {status:"success"}
+
+
+
+})
+function sleep(time){
+  return new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve();
+
+    },time);
+  })
+}
 router.post('/form',(ctx, next) => {
   // ctx.body = 'Hello World'
   const { name } = ctx.request.body;
@@ -180,63 +230,63 @@ function search(tasks,name){
 
                                                                         
 
-//=======================
-//新get请求
-// router.get('/add', async (ctx, next) => {
-//   ctx.state = {
-//     title: 'Koa2'
-//   }
-//   const {name,id} = ctx.request.query
-//   let obj = {
+// =======================
+// 新get请求
+router.get('/add', async (ctx, next) => {
+  ctx.state = {
+    title: 'Koa2'
+  }
+  const {name,id} = ctx.request.query
+  let obj = {
 
-//     name,
-//     id,
+    name,
+    id,
 
-//   }
-//   console.log(1);
-//   ctx.redirect('/post');
-// })
-//=======================
-// router.post('/post', async (ctx, next) => {
-//   console.log(2);
-//   const {name,id} = ctx.request.body
-//   let obj = {
-//     type:"post",
-//     name,
-//     id,
+  }
+  console.log(1);
+  ctx.redirect('/post');
+})
+// =======================
+router.post('/post', async (ctx, next) => {
+  console.log(2);
+  const {name,id} = ctx.request.body
+  let obj = {
+    type:"post",
+    name,
+    id,
 
-//   }
-//   ctx.response.body = obj;
-// })
-// router.post('/isPrime', async (ctx, next) => {
-//   const {a} = Number(ctx.request.body);
-//   a = Number(a);
-//   const flag = isPrime(Number(number));
-//   let data={};
-//   if(flag){
-//     data.isPrime=true;
-//   }else{
-//     data.isPrime=false;
-//     number++;
-//     while(!isPrime(number)){
-//       number++;
-//     }
-//     data.number=number;
-//   }
-//   ctx.response.body=data;
+  }
+  ctx.response.body = obj;
+})
+router.post('/isPrime', async (ctx, next) => {
+  const {a} = Number(ctx.request.body);
+  a = Number(a);
+  const flag = isPrime(Number(number));
+  let data={};
+  if(flag){
+    data.isPrime=true;
+  }else{
+    data.isPrime=false;
+    number++;
+    while(!isPrime(number)){
+      number++;
+    }
+    data.number=number;
+  }
+  ctx.response.body=data;
   
-// })
-// function isPrime(n){
-//   for(var i=2;i<n;i++){
-//     if(n%i !== 0){
-//       return true
-//     }
-//     else{
-//       return false
-//     }
-//   }
+})
+function isPrime(n){
+  for(var i=2;i<n;i++){
+    if(n%i !== 0){
+      return true
+    }
+    else{
+      return false
+    }
+  }
 
-// }
+}
 
 
 
