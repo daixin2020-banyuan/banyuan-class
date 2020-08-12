@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .main label {
+			display: block;
+			margin: 0px;
+    }
+    .main label>span {
+			float: left;
+			width: 20%;
+			text-align: right;
+			padding-right: 10px;
+			margin-top: 10px;
+			color: #888;
+    }
+    .main textarea{
+			padding: 5px 3px 3px 5px;
+		}
+    
+    .submitButton{
+      background: #E27575;
+			cursor: pointer;
+    }
+    /* disabled */
+		.submitButton:disabled{
+		  border: 1px solid #999999;
+		  background-color: #cccccc;
+		}
+		
+		.warning{
+			color:red;
+			text-align: center;
+			width: 100%;
+			margin-bottom: 10px;
+		}
+  </style>
+</head>
+<body>
+  
+    <div class="main">
+
+      <div class="name-label">
+        用户名：
+        <input type="text" class="name"/>
+      </div>
+
+      <div class="password-label">
+        密码：
+        <input type="password" class="password"/>
+      </div>
+
+      <div class="confirm-label">
+        确认：
+        <input type="password" class="confirm"/>
+      </div>
+
+      <div>
+        <button type="button" class="submitButton">注册</button>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery3.5.js"></script>
+
+    <script>
+
+/* name input element */
+let nameEle = document.getElementsByClassName('name')[0];
+
+/* passowrd input element */
+let passwordEle = document.getElementsByClassName('password')[0];
+
+/* passowrd input element */
+let confirmEle = document.getElementsByClassName('confirm')[0];
+
+/* button element */
+let buttonEle = document.getElementsByClassName('submitButton')[0];
+
+/* label */
+let nameLabel = document.getElementsByClassName('name-label')[0];
+
+let passwordLabel = document.getElementsByClassName('password-label')[0];
+
+let confirmLabel = document.getElementsByClassName('confirm-label')[0];
+
+/* 检测结果 */
+let nameTestResult = false;
+
+let passowrdTestResult = false;
+
+let passowrdConfirmResult = false;
+
+
+
+/* 检测用户名 */
+function checkName(){
+
+    // value
+    let name = nameEle.value;
+    
+    // reg
+    let partten = /^[a-zA-Z0-9_-]{4,16}$/;
+
+    let flag = partten.test(name);
+
+    let warningEle = document.getElementsByClassName('warning name')[0];
+
+    if(flag){
+        // 清空warning
+        if(warningEle){
+
+            warningEle.remove();
+        }
+    }else{
+        let ele = createWarning('name','用户名输入错误，4到16位，字母，数字，下划线，减号');
+        if(!warningEle){
+            nameLabel.append(ele);
+        }
+        
+    }
+
+    nameTestResult = flag;
+
+    enableButton();
+}
+
+/* 检测密码 */
+function checkPassword(){
+
+    // value
+    let password = passwordEle.value;
+
+    // reg
+    let partten = /^\w{8,15}$/;
+
+    let flag = partten.test(password);
+
+    let warningEle = document.getElementsByClassName('warning password')[0];
+
+    if(flag){
+        // 清空warning
+        // ele 存在 remove
+        if(warningEle){
+
+            warningEle.remove();
+        }
+
+    }else{
+        let ele = createWarning('password','密码格式错误，password的长度不小于8位，不大于15位');        
+        if(!warningEle){
+            passwordLabel.append(ele);
+        }
+    }
+
+    passowrdTestResult = flag;
+
+    enableButton();
+}
+
+//密码确认
+function confirmPassword(){
+  let password = passwordEle.value;
+  let confirm = confirmEle.value;
+  let warningEle = document.getElementsByClassName('warning confirm')[0];
+  let flag = (password == confirm); 
+  if (flag){
+      if(warningEle){
+          
+        warningEle.remove();
+
+      }
+    }else{
+      // 显示warning
+      let ele = createWarning('confirm','两次输入密码不一致');
+        if(!warningEle){
+            confirmLabel.append(ele);
+        }
+
+    }
+    passowrdConfirmResult = flag;
+
+    enableButton();
+
+
+}
+
+
+/* 创建提示元素 ele*/
+function createWarning(target,content){
+
+let ele = document.createElement('div');
+
+ele.className = 'warning ' + target;
+
+ele.innerHTML = content;
+
+return ele;
+}
+
+/* 激活button */
+function enableButton(){
+
+    buttonEle.disabled = !(nameTestResult && passowrdTestResult&&passowrdConfirmResult)
+}
+
+
+/* button点击事件前后端交互 */
+
+buttonEle.onclick = function(){
+
+      $.ajax({
+        type:"post",
+        url:"http://localhost:2000/regist",
+        data:{ 
+          name:nameEle.value,
+          password:passwordEle.value,
+          confirm:confirmEle.value
+        },
+        success:(result)=>{
+          if(result.nameResult == false){
+            let ele = createWarning('name','用户名输入错误，4到16位，字母，数字，下划线，减号');
+            if(!warningEle){
+            nameLabel.append(ele);
+               }
+          }
+          else if(result.passwordResult == false){
+            let ele = createWarning('password','密码格式错误，password的长度不小于8位，不大于15位');        
+             if(!warningEle){
+                 passwordLabel.append(ele);
+                 }
+          }
+          else if(result.confirmResult = false){
+              let ele = createWarning('confirm','两次输入密码不一致');
+              if(!warningEle){
+                  confirmLabel.append(ele);
+              }
+          }else{
+              window.alert('注册成功')
+          }
+
+
+        },
+        error:()=>{
+
+        }
+        
+
+      })
+
+}
+
+
+
+
+/* 绑定事件 */
+// nameEle.onblur = checkName;
+
+$('.name').blur(checkName);
+
+// passwordEle.onblur = checkPassword;
+
+$('.password').blur(checkPassword);
+
+$('.confirm').blur(confirmPassword);
+
+
+</script>
+</body>
+</html>
