@@ -61,11 +61,31 @@
       <div>
         <button type="button" class="submitButton">注册</button>
       </div>
+
+      <div>
+        登陆用户名：
+        <input type="text" class="login"/>
+      </div>
+
+      <div>
+        登陆密码：
+        <input type="password" class="loginpassword"/>
+      </div>
+
+      <div>
+        <button type="button" class="loginbutton">点击登陆</button>
+      </div>
+      
+      
+      </div>
     </div>
+
 
     <script type="text/javascript" src="js/jquery3.5.js"></script>
 
     <script>
+
+
 
 /* name input element */
 let nameEle = document.getElementsByClassName('name')[0];
@@ -86,6 +106,12 @@ let passwordLabel = document.getElementsByClassName('password-label')[0];
 
 let confirmLabel = document.getElementsByClassName('confirm-label')[0];
 
+let loginEle =document.getElementsByClassName('login')[0];
+
+let loginpasswordEle = document.getElementsByClassName('loginpassword')[0];
+
+let loginbuttonEle =document.getElementsByClassName('loginbutton')[0];
+
 /* 检测结果 */
 let nameTestResult = false;
 
@@ -94,6 +120,26 @@ let passowrdTestResult = false;
 let passowrdConfirmResult = false;
 
 
+loginbuttonEle.onclick = function (){
+  $.ajax({
+
+    type:'post',
+    url:'http://localhost:2000/checklogin',
+    data:{
+      name :loginEle.value,
+      password:loginpasswordEle.value,
+    },
+    success:(result)=>{
+      if(result.status === 'success'){
+        alert('登陆成功')
+      }else{
+        alert(result.message)
+      }
+    },
+    error:()=>{
+    }
+  })
+}
 
 /* 检测用户名 */
 function checkName(){
@@ -232,7 +278,7 @@ buttonEle.onclick = function(){
                  passwordLabel.append(ele);
                  }
           }
-          else if(result.confirmResult = false){
+          else if(result.confirmResult == false){
               let ele = createWarning('confirm','两次输入密码不一致');
               if(!warningEle){
                   confirmLabel.append(ele);

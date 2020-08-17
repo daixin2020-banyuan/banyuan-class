@@ -132,37 +132,37 @@
 <script src="./jquery3.5.js"></script>
 <script>
 
-		let nameEle = document.getElementsByClassName('name')[0];
-		let password = document.getElementsByClassName('password')[0];
-		let main = document.getElementsByClassName('main')[0];
-		let button = document.getElementsByClassName('submitButton')[0];
+		// let nameEle = document.getElementsByClassName('name')[0];
+		// let password = document.getElementsByClassName('password')[0];
+		// let main = document.getElementsByClassName('main')[0];
+		// let button = document.getElementsByClassName('submitButton')[0];
 		
 
-		nameEle.onblur=function(){
+		// nameEle.onblur=function(){
 
-			if(nameEle.value){
-        		$.ajax({
-            		type:"post",
-            	// async: false ,
-            		url:"http://localhost:2000/form",
-            		data : {
-                		name:nameEle.value,
-            		},
-            		success:function(result){
-						if(result.include){
-							main.innerHTML = "存在"
-						}else{
-							main.innerHTML="";
-						}
+		// 	if(nameEle.value){
+        // 		$.ajax({
+        //     		type:"post",
+        //     	// async: false ,
+        //     		url:"http://localhost:2000/form",
+        //     		data : {
+        //         		name:nameEle.value,
+        //     		},
+        //     		success:function(result){
+		// 				if(result.include){
+		// 					main.innerHTML = "存在"
+		// 				}else{
+		// 					main.innerHTML="";
+		// 				}
 
-					},
-					error:function(error){
-						console.log(error);
-					}
+		// 			},
+		// 			error:function(error){
+		// 				console.log(error);
+		// 			}
             
-				})
-			}
-    	}
+		// 		})
+		// 	}
+    	// }
         /* name input element */
         var nameEle = document.getElementsByClassName('name')[0];
 
