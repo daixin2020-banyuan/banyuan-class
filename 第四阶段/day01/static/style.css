@@ -1,0 +1,111 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    /* width: 2220px; */
+}
+.hearder-title{
+    /* width: 100%; */
+    margin: 0 auto;
+    margin-top: 150px;
+    text-align: center;
+    font-family:'Fira Sans',sans-serif;
+    font-size: 35px;
+    font-weight: 600;
+    color: rgb(103, 105, 108);
+}
+.header-content{
+    /* width: 100%; */
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 52px;
+    color: rgb(103, 105, 108);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.solid{
+    width: 50px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    border-bottom: 5px solid lightsalmon;
+}
+
+/* .main{
+    margin: 0 auto;
+    /* width: 2220px;
+ } */
+
+/* .middle,.left,.right{
+    float: left;
+    width: 700px;
+} */
+
+/* 图片 */
+.container-img{
+    /* width: 700px;
+    height: 467px; */
+    overflow: hidden;
+}
+.img-style{
+    width: 100%;
+}
+.img-style:hover{
+    transition: all 2s;
+    transform: scale(1.5);
+}
+
+/* 文字大标题 */
+.main-title{
+    font-size: 20px;
+    color: rgb(103, 105, 108);
+    font-weight: 600;
+    margin-top: 58px;
+}
+
+/* 内容文字 */
+.main-content{
+    margin-top: 53px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgb(103, 105, 108);
+}
+
+/* 底部 readmore */
+.readmore{
+    font-size: 20px;
+    font-weight: 300;
+    color: #949494;
+    margin-top: 46px;
+}
+
+/* 左侧 */
+.left{
+    margin-right: 30px;
+    margin-left: 30px;
+
+
+}
+.second-title{
+    font-size: 20px;
+    color: rgb(103, 105, 108);
+    font-weight: 600;
+    margin-top: 58px;
+}
+.post{
+    margin-top: 37px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgb(103, 105, 108);
+}
+.middle{
+    margin-right: 30px;
+    margin-left: 30px;
+}
+.right{
+    margin-left: 30px;
+    margin-right: 30px;
+
+}
+
+
