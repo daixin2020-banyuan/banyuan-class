@@ -1,0 +1,105 @@
+
+*{
+    padding: 0 ;
+    margin: 0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+body{
+    padding: 0 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* 头部的一行  */
+.title-container{
+    display: flex;
+    height: 70px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-menu{
+    width: 800px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-details{
+    width: 144px;
+    height: 70px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 70px;
+}
+.menu-details:hover{
+    background-color: #40c4ff;
+    color: white;
+}
+.bg-container{
+    background-image: url(./imgs/bg-iamges.jpg);
+    background-image: no-repeat;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.main{
+    padding: 0 20px;
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.nav-button{
+    display: flex;
+    margin: 50px auto;
+}
+.nav-child{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid rgb(54, 183, 235);
+    text-align: center;
+    line-height: 45px;
+    color:rgb(54, 183, 235);
+    cursor: pointer;
+}
+.nav-child:hover{
+    background-color:rgb(54, 183, 235) ;
+    color: white;
+}
+.footer{
+    background-color: black;
+    height: 120px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.footer-left{
+    display: flex;
+    align-items: center;
+
+}
+.footer-right{
+    display: flex;
+    align-items: center;
+}
+.icon{
+    margin-right: 30px;
+}
