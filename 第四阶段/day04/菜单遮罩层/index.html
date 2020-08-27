@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font-awesome-4.7.0 2/css/font-awesome.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <div class="child-container">
+                <div>叉烧芋粒饺</div>
+                <div class="child">
+                    <span>$5.95</span>
+                    <div class="button-parent">
+                        <button class="button-left black">-</button>
+                        <div class="button-middle black">1</div>
+                        <button class="button-right black">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="child-container">
+                <div>菜肉饺</div>
+                <div class="child">
+                    <span>$5.50</span>
+                    <div class="button-parent">
+                        <button class="button-left black">-</button>
+                        <div class="button-middle black">1</div>
+                        <button class="button-right black">+</button>
+                    </div>
+                </div>            </div>
+            <div class="child-container">
+                <div>菜饺</div>
+                <div class="child">
+                    <span>$6.60</span>
+                    <div class="button-parent">
+                        <button class="button-left black">-</button>
+                        <div class="button-middle black">1</div>
+                        <button class="button-right black">+</button>
+                    </div>
+                </div>            </div>
+            <div class="child-container">
+                <div>上海锅贴</div>
+                <div class="child">
+                    <span>$6.60</span>
+                    <div class="button-parent">
+                        <button class="button-left black">-</button>
+                        <div class="button-middle black">1</div>
+                        <button class="button-right black">+</button>
+                    </div>
+                </div>            </div>
+            <div class="child-container">
+                <div>干味煎饺</div>
+                <div class="child">
+                    <span>$6.95</span>
+                    <div class="button-parent">
+                        <button class="button-left black">-</button>
+                        <div class="button-middle black">1</div>
+                        <button class="button-right black">+</button>
+                    </div>
+
+                </div>            
+            </div>
+        </div>
+
+
+        <div class="bottom">
+            <div class="border-div"></div>
+            <div class="details-container">
+                <div style="font-size:24px;">总价:</div>
+                <div style="font-size:24px;">$32.40</div>
+            </div>
+            <button class="confirm-button">确认下单</button>
+        </div >
+        <div class="model">
+        <i class="fa fa-spinner fa-2x fa-pulse" ></i>
+            <div style="font-size: 16px; margin-top: 10px;">正 在 确 认 中...</div>
+        </div >
+
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+<script>
+
+    let confirmBtn = document.getElementsByClassName('confirm-button')[0];
+    let model = document.getElementsByClassName('model')[0];
+    let timer;  
+
+    confirmBtn.onclick = _.throttle(()=>{
+        model.style.display = 'flex'
+        modelDismiss();
+        
+    },1500)
+
+    function modelDismiss(){
+        if(timer){
+            clearInterval(timer)
+        }
+
+        timer = setTimeout(()=>{
+            model.style.display = 'none'
+        },1500)
+    }
+    // confirmBtn.onclick = _.throttle(()=>{
+    //     console.log (1)
+    // },2000)
+ 
+    // confirmBtn.onclick = _.debounce(()=>{
+    //     console.log (1)
+    // },500)
+
+
+
+
+
+
+</script>
+</html>
