@@ -1,0 +1,166 @@
+*{
+    padding:0;
+    margin: 0;
+}
+html {
+    font-size: 100px;
+    line-height: 100px;
+    }
+@media screen and (max-width: 360px){
+    html {
+    font-size: 90px;
+    line-height: 90px;
+    }
+}
+   
+
+.header{
+    width: 100%;
+    height: 52px;
+    margin-bottom: 9px;
+}
+.icon-container{
+    width: 100%;
+    height: 39px;
+    display: flex;
+    justify-content: space-between;
+    /* padding-left: 4px; */
+}
+.icon-left{
+    width: 0.5rem;
+    height: 0.44rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.line-container{
+    width: 20px;
+    height: 20px;
+}
+.line{
+    height: 6px;
+    border-bottom: 1px solid #999;
+    width: 20px;
+}
+.icon-riht{
+    width: 0.5rem;
+    height: 0.44rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    
+}
+.box-container{
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;      
+    flex-wrap: wrap;
+
+}
+.box{
+    height: 5px;
+    width: 5px;
+    border: 1.5px solid #999;
+}
+.logo-container{
+    height: 57px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+.logo{
+    max-width: 217px;
+    height: 57px;
+}
+.search-container{
+    height: 44px;
+    margin: 0 16px;
+    border: 1px solid #363636;        
+    display: flex;
+    position: relative;
+
+
+}
+.search-input{
+    box-sizing: border-box;
+    height: 44px;
+    border: 0;
+    flex: 1;
+    padding: 7px 77px 7px 6px;
+    font-family: Arial,Helvetica,sans-serif;
+
+}
+.search-btn{
+    box-sizing: content-box;
+    width: 60px;
+    height: 44px;
+    padding: 0 10px;
+    border: 0;
+    border-left: 1px solid #e8e8e8;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 46px;
+    color: #38f;
+    letter-spacing: -1px;
+    background-color: white;
+}
+input::-webkit-input-placeholder{
+    font-size: 16px;
+    color: #999;
+
+}
+.microphone{
+    font-size: 19px;
+    position: absolute;
+    right: 140px;
+    top:15px;
+}
+.borderline{
+    border-left: 1px solid #e8e8e8;
+    height: 44px;
+    position: absolute;
+    right:120px;
+
+}
+.camera{
+    font-size: 19px;
+    position: absolute;
+    right: 91px;
+    top:15px;
+}
+.AD-container{
+    width: 382px;
+    height: 133px;
+    background: #fff;
+    margin-top: 20px;
+    margin: 10px auto;
+}
+.rn-container{
+    height: 40px;
+    padding: 17px 16px 5.4px 16px; 
+
+}
+.rn-h1{
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 1px;
+    margin-top: -3px;
+}
+.rn-footer{
+    font-size: 13px;
+    height: 18px;
+    line-height: 18px;
+}
+.rn-icon-hot{
+    color: #ec4345;
+    margin-right: 8px;
+}
+.rn-domainName{
+    color: #999;
+}
+.news-container{
+    border-top: 1px solid #f0f0f0 ;
+    margin: 0 16px;
+}
