@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+        }
+        .left-img div{
+            width: 50px;
+            height: 50px;
+        
+        }
+        .div1{
+            width: 50px;
+            height: 50px;
+            background-color: rgb(243, 243, 243);
+
+        }
+        .imgcontainer{
+            display: flex;
+            flex-direction: column;
+            height: 50px;
+            width: 50px;
+            background-color: rgb(243, 243, 243);
+            justify-content: center;
+        }
+        .nolimgcontainer{
+            display: flex;
+            flex-direction: column;
+            height: 50px;
+            width: 50px;
+            justify-content: center;
+        }
+        img{
+            width: 40px;
+            height: 40px;
+        }
+        .greyContainer{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding-left: 70px;
+            background-color: rgb(243, 243, 243);
+            font-size: 15px;
+            line-height: 50px;
+            height: 50px;
+        }
+        .greyContainer div{
+            width: 100px;
+        }
+
+        .normalContainer{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding-left: 70px;
+            font-size: 15px;
+            line-height: 50px;
+            height: 50px;
+        }
+        .normalContainer div{
+            width: 100px;
+        }
+        .child{
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .child div{
+            width: 100px;
+        }
+        .img-bg{
+            background-color:rgb(243, 243, 243)
+        }
+
+        
+    </style>
+</head>
+    
+<body>
+    <div id="app">
+        
+
+    </div >
+    
+</body>
+<script>
+    let app = new Vue({
+        el:'#app',
+        template:`
+            <div>
+
+                <div :class= " 'container' ">
+                    
+                    <div :class=" 'left-img' "> 
+                        <div :class=" 'div1' ">
+
+                        </div>
+                        <div>
+                            <img src="第一名.jpg" alt="">
+                        </div>
+                        <div :class= " ' img-bg' ">
+                            <img src="第二名.jpeg" alt="">
+                        </div>
+                        <div>
+                            <img src="第三名.jpeg" alt="">
+                        </div>
+                        <div :class=" 'div1' ">
+
+                        </div>  
+                    </div>
+
+                    <div :style= " 'flex:1'">
+                        <div :class=" 'greyContainer' " >
+                            <div>姓名</div>
+                                <div v-for='item in major' :class=" 'child' ">
+                                    <div>{{item}}</div>
+                                </div>
+                            <div>总分</div>
+                        </div>
+
+
+                        <div v-for = '(item,index) in list' >
+                            <div :class=" index % 2 !== 0 ? 'greyContainer' : 'normalContainer' ">
+                                <div>{{item.name}}</div>
+                                    <div v-for = " item2 in item.score  " :class=" 'child' ">
+                                        <div>{{item2.math}}</div>
+                                        <div> {{item2.chinese}}</div>
+                                        <div>{{item2.english}}</div>
+                                        <div>{{item2.geography}}</div>
+                                        <div> {{item2.history}}</div>
+                                    </div>
+                                <div>{{item.allCount}}</div>
+                            </div>
+                        </div>
+                    </div>    
+
+                </div>    
+            </div>
+        `,
+        data(){
+            return{
+                major:['数学','语文','英语','地理','历史'],
+                list:[
+                        {
+                            name: '肖锋',
+                            score: [{ math: 99, chinese: 100, english: 100, geography: 99, history: 98 }],
+                            allCount: 496
+                        },
+                        {
+                            name: '安澜',
+                            score: [{ math: 90, chinese: 98, english: 89, geography: 96, history: 100 }],
+                            allCount: 473
+                        },
+                        {
+                            name: '路小北',
+                            score: [{ math: 88, chinese: 87, english: 77, geography: 86, history: 78 }],
+                            allCount: 416
+                        },
+                        {
+                            name: '许巍',
+                            score: [{ math: 39, chinese: 40, english: 76, geography: 90, history: 59 }],
+                            allCount: 304
+                        }
+                    ]
+            }
+        }
+    })
+
+
+
+</script>
+</html>
