@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .container{
+            width: 300px;
+            height: 600px;
+            box-shadow:5px 5px 5px 5px #888888;
+            margin: 50px auto;
+        }
+       
+        .child-container{
+            width: 90%;
+            margin: 0 auto;
+            height: 500px;
+            padding-top: 50px;
+        }
+        .child{
+            height: 50px;
+            background-color: rgb(243, 243, 243);
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .btn-container{
+            display: flex;
+            padding-left: 10px;
+        }
+        .leftbtn{
+            width: 20px;
+            height: 22px;
+            border: none;
+            outline: none;
+            background-color: black;
+            color: white;
+            border-bottom-left-radius: 50%;
+            border-top-left-radius: 50%;
+            text-align: center;
+            padding-right: 2px;
+
+        }
+        .rightbtn{
+            width: 20px;
+            height: 22px;
+            border: none;
+            outline: none;
+            background-color: black;
+            color: white;
+            border-bottom-right-radius: 50%;
+            border-top-right-radius: 50%;
+            text-align: center;
+            padding-left: 2px;
+        }
+        .count-container{
+            background-color: black;
+            color: white;
+            width: 20px;
+            text-align: center;
+        }
+        .details{
+            display: flex;
+            padding-right: 10px;
+        }
+        .total{
+            margin-top: 80px;
+            margin-right: 50px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="child-container" >
+                <div class="child" v-for="(item,index) in list">
+                    <div style="padding-left: 10px;">{{ item.name }}</div>
+                    <div class="details">
+                        <div>¥：{{item.price}}</div>
+                        <div class="btn-container">
+                            <button class="leftbtn" v-on:click="leftClick(index)" >-</button>
+                            <div class="count-container" >{{item.count}}</div>
+                            <button class="rightbtn" v-on:click="rightClick(index)" >+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="total">总价格:{{totalPrice}}</divc>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</body>
+<script>
+
+    var vm = new Vue({
+        el: "#app",
+        data () {            
+            return{
+                list:[
+                    {name:'苹果',price:30,count:1},
+                    {name:'香蕉',price:20,count:1},
+                    {name:'李子',price:50,count:2},
+                    {name:'西瓜',price:10,count:1},
+                ]
+            }
+        },
+        computed:{
+            totalPrice(){
+                let acount = 0  ;
+                for (let i  = 0 ; i < this.list.length;i++){
+                    acount = acount + this.list[i].price * this.list[i].count
+                } 
+                return acount
+            }
+
+        },
+        
+        methods: {
+            leftClick (index) {
+
+                if(this.list[index].count >1){
+                    this.list[index].count--
+                }else{
+                    alert('不能再少了')
+                }
+                
+            },
+            rightClick (index) {
+                if(this.list[index].count <4){
+                    this.list[index].count++
+                }else{
+                    alert('没有库存了')
+                }
+            }
+        }
+    })
+
+</script>
+</html>
